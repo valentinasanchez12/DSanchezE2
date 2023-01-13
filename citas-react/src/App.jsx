@@ -1,4 +1,11 @@
+import Formulario from "./components/Formulario"
+import Header from "./components/Header"
+import ListaPaciente from "./components/ListaPaciente"
+
+
+
 /*funcion creadora de la aplicacion */
+
 function App() {
  
 
@@ -6,17 +13,9 @@ function App() {
     /* etiqueta padre debajo queda el body de la pagina*/
    <>
         
-    <div className="App">
-        
-          <h1>Ejemplo</h1>
-        
-    </div>
-     <div className="App">
-          
-          <h1>Ejemplo2</h1>
-        
-    </div>
-           
+   <Header/>
+   <Formulario/>|
+   <ListaPaciente/>|
     </>
 
  
