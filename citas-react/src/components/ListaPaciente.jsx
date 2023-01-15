@@ -1,10 +1,10 @@
 
 function ListaPaciente() {
   return (
-    <>
-    <div>ListaPaciente</div>
-    <h1>"paciente alieth"</h1>
-    </>
+   
+    <div className="w-1/2 lg:w-3/5">
+      <h2>listado paciente</h2>
+    </div>
   )
 }
 
