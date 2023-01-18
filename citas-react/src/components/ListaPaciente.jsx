@@ -1,4 +1,4 @@
-import Pacientes from "./Pacientes"
+import Pacientes from "./Pacientes"; 
 
 function ListaPaciente() {
   return (
@@ -9,12 +9,11 @@ function ListaPaciente() {
         Administra tus {" "}
         <span className="text-indigo-600 font-bold"> pacientes y citas</span>
       </p>
-      
-      <Pacientes/>
-      <Pacientes/>
-      <Pacientes/>
-    
 
+      <Pacientes/> 
+      <Pacientes/> 
+      <Pacientes/> 
+      
     </div>
   )
 }

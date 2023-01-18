@@ -1,6 +1,8 @@
 import Formulario from "./components/Formulario"
 import Header from "./components/Header"
 import ListaPaciente from "./components/ListaPaciente"
+import Pacientes from "./components/Pacientes"
+
 
 
 
