@@ -1,11 +1,9 @@
-
-
 const Formulario = () => {
   return (
   
     <div className="md:w-1/2 lg:w-2/5 "> 
       <h2 className="font-black text-3xl text-center">
-        seguimiento a pacientes{" "}
+        seguimiento a pacientes
       </h2>
       <p className="text-lg mt-5 text-center mb-10">
         añade pacientes {" "} 
@@ -25,7 +23,7 @@ const Formulario = () => {
         </div>
 
         <div className="mb-5">
-          <label htmlFor="email" className="block text-gray-700 uppercase font-bold "> correo electronico: </label>
+          <label htmlFor="email" className="block text-gray-700 uppercase font-bold ">correo electronico: </label>
           <input id="email" type="email" className="border-2 w-full p-2 mt-2 placeholder bg-indigo-100 rounded-md" placeholder = "corrreo electronico:"/>
         </div>
 
