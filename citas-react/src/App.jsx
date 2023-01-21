@@ -4,9 +4,12 @@ import ListaPaciente from "./components/ListaPaciente"
 import Pacientes from "./components/Pacientes"
 
 
-
+import { useState } from "react"
 
 function App() {
+  /*estado de retorno constante*/
+  /*Podemos crear funciones antes del return*/
+  const [pacientes, setPacientes] = useState([]);
 
  return (
     /* etiqueta padre debajo queda el body de la pagina
@@ -15,8 +18,13 @@ function App() {
         
       <Header/>
       <div className="mt-12 md:flex"> 
-        <Formulario/>
-        <ListaPaciente/>
+        <Formulario     
+          pacientes = {pacientes}
+          setPacientes = {setPacientes}
+       />
+       <ListaPaciente
+          pacientes = {pacientes}
+          />
       </div>
     </div>
 
