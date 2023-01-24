@@ -9,6 +9,10 @@ const Formulario = ({pacientes, setPacientes}) => {
   const [fecha, setFecha] = useState('');
   const [sintomas, setSintomas] = useState('');
 
+    //hook para calcular errores
+
+    const [error, setError]= useState(false);
+
   //Limpiarr o resetear el formulario cuando carga la pagina
 
   const handleSubmit = (e) => {
@@ -28,8 +32,9 @@ const Formulario = ({pacientes, setPacientes}) => {
     nombre,
     propietario,
     email,
-    fingreso, 
-    sintomas
+    fecha, 
+    sintomas,
+    id: generarID()
   }
    //console.log(obetoPaciente);
   
@@ -38,13 +43,19 @@ const Formulario = ({pacientes, setPacientes}) => {
   setNombre('')
   setPropietario('')
   setEmail('')
-  setFingreso('')
+  setFecha('')
   setSintomas('')
 
   }
-  //hook para calcular errores
 
-   const [error, setError]= useState(false);
+
+   //funcion para generar id
+   const generarID = () =>{
+    const random =Math.random().toString(36).substr(2);
+    const fecha = Date.now().toString(36);
+
+    return random+fecha
+  }
 
 
   
@@ -62,9 +73,14 @@ const Formulario = ({pacientes, setPacientes}) => {
 
       <form className="bg-gray-100 shadow-md rounded-lg py-10 px-5 mb-10 " onSubmit={handleSubmit}>
 
-        {error && <Error>
-          <p>Todos los campos son obligatorios</p>
-          </Error>}
+      {error && <Error>
+          <p>
+            Todos los campos son Obligatorios!
+          </p>
+          
+          </Error>
+
+      }
         <div className="mb-5">
           <label htmlFor="mascotas" className="block text-gray-700 uppercase font-bold "> Nombre mascota: </label>
           <input id="mascotas" type="text" className="border-2 w-full p-2 mt-2 placeholder bg-indigo-100 rounded-md" placeholder = "Nombre mascota:" value={nombre} onChange={(e)=> setNombre (e.target.value)}/>
