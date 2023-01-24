@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react";
 import Error from "./Error";
 
-const Formulario = ({pacientes, setPacientes}) => {
+const Formulario = ({pacientes, setPacientes, pacienteE}) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -57,18 +57,18 @@ const Formulario = ({pacientes, setPacientes}) => {
     return random+fecha
   }
 
+   //revision de cargue de datos en el form
+   useEffect(()=>{
+    console.log(pacienteE);
+   },[pacienteE])
 
-  
+    
   return (
   
     <div className="md:w-1/2 lg:w-2/5 mx-5 uppercase"> 
-      <h2 className="font-black text-3xl text-center">
-       listado de paciente
-      </h2>
-      <p className="text-lg mt-5 text-center mb-10">
-        añade pacientes {" "} 
-      <span className="text-indigo-800 font-bold" >
-        Administralos</span>
+      
+      <p className=" font-black text-3xl mt-5 text-center mb-10">
+        añade pacientes   
       </p>
 
       <form className="bg-gray-100 shadow-md rounded-lg py-10 px-5 mb-10 " onSubmit={handleSubmit}>
@@ -77,7 +77,6 @@ const Formulario = ({pacientes, setPacientes}) => {
           <p>
             Todos los campos son Obligatorios!
           </p>
-          
           </Error>
 
       }
