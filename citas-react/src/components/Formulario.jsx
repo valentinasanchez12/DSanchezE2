@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react";
 import Error from "./Error";
 
-const Formulario = ({pacientes, setPacientes, pacienteE}) => {
+const Formulario = ({pacientes, setPacientes, pacienteE, setPacienteE}) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -33,12 +33,34 @@ const Formulario = ({pacientes, setPacientes, pacienteE}) => {
     propietario,
     email,
     fecha, 
-    sintomas,
-    id: generarID()
+    sintomas
   }
+
+  //proceso de actualizacion
+  if(pacienteE.id){
+    // console.log("editando")
+    objetoPaciente.id = pacienteE.id
+   // console.log(objetoPaciente)
+    //console.log(pacienteE)
+
+    const pacienteActualizado =pacientes.map(
+      pacienteState => pacienteState.id === pacienteE.id ?
+      objetoPaciente:pacienteState
+    )
+
+    setPacientes(pacienteActualizado)
+    setPacienteE({})
+
+   }else{ 
+     //console.log("agregando mascota..")
+     objetoPaciente.id = generarID();
+     setPacientes([...pacientes, objetoPaciente])
+     }
+   
+
    //console.log(obetoPaciente);
   
-   setPacientes([...pacientes, objetoPaciente])
+  setPacientes([...pacientes, objetoPaciente])
    //Limpieza de hooks - useState de cada uno
   setNombre('')
   setPropietario('')
@@ -59,14 +81,20 @@ const Formulario = ({pacientes, setPacientes, pacienteE}) => {
 
    //revision de cargue de datos en el form
    useEffect(()=>{
-    console.log(pacienteE);
+   if(Object.keys(pacienteE).length > 0){
+    setNombre(pacienteE.nombre)
+    setPropietario(pacienteE.propietario)
+    setEmail(pacienteE.email)
+    setFecha(pacienteE.fecha)
+    setSintomas(pacienteE.sintomas)
+     }
    },[pacienteE])
 
     
   return (
   
     <div className="md:w-1/2 lg:w-2/5 mx-5 uppercase"> 
-      
+
       <p className=" font-black text-3xl mt-5 text-center mb-10">
         añade pacientes   
       </p>
@@ -77,8 +105,9 @@ const Formulario = ({pacientes, setPacientes, pacienteE}) => {
           <p>
             Todos los campos son Obligatorios!
           </p>
-          </Error>
 
+          </Error>
+          
       }
         <div className="mb-5">
           <label htmlFor="mascotas" className="block text-gray-700 uppercase font-bold "> Nombre mascota: </label>
@@ -106,7 +135,7 @@ const Formulario = ({pacientes, setPacientes, pacienteE}) => {
           <textarea id="sintomas" className="border-2 w-full p-2 mt-2 placeholder bg-indigo-100 rounded-md" placeholder = "agregar sintomas:" value={sintomas} onChange={(e)=> setSintomas (e.target.value)}/>
         </div>
 
-        <input type="submit" value="agregar mascota" className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-colors" />
+        <input type="submit" value={pacienteE.id ? "editar mascotas":"agregar mascotass"}className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-colors" />
 
        </form>
 
