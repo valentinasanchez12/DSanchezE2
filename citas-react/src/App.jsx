@@ -22,12 +22,14 @@ function App() {
           pacientes = {pacientes}
           setPacientes = {setPacientes}
           pacienteE ={pacienteE}
+          setPacienteE = {setPacienteE}
        />
        <ListaPaciente
           pacientes = {pacientes}
           setPacienteE = {setPacienteE}
-
+          
           />
+
       </div>
     </div>
 
